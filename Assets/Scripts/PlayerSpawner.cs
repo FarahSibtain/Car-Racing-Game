@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Cinemachine;
 using Fusion;
+using TMPro;
 using UnityEngine;
 
 public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
@@ -10,7 +11,8 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
     [SerializeField] CinemachineVirtualCamera freeLookCamera;
     [SerializeField] int horizontalGap;
     [SerializeField] int verticalGap;
-    
+    [SerializeField] TMP_InputField playerName;
+
     //[Networked, Capacity(12)] private NetworkDictionary<PlayerRef, NetworkObject> Players => default;
     public void PlayerJoined(PlayerRef player)
     {
@@ -20,7 +22,8 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
             NetworkObject playerObj = Runner.Spawn(playerPrefab, GetCarPosition(), spawnPoint.rotation);            
             //Players.Add(player, playerObj);
             SetCamera(playerObj.transform);
-            
+            NameFieldHandler nameFieldHandler  = playerObj.GetComponent<NameFieldHandler>();
+            nameFieldHandler.SetPlayerNameField(playerName.text);
         }
     }
     Vector3 GetCarPosition()

@@ -2,16 +2,23 @@ using System;
 using System.Collections.Generic;
 using Fusion;
 using Fusion.Sockets;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class AutoConnectionHandler : MonoBehaviour, INetworkRunnerCallbacks
 {
     [SerializeField] GameObject canvas;
+    [SerializeField] TMP_InputField playerName;
     private NetworkRunner _runner;
 
     public void ConnectToPhotonNetwork()
     {
+        if (string.IsNullOrEmpty(playerName.text))
+        {
+            return;
+        }
+        
         StartSharedMode();
     }
 
