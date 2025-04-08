@@ -1,4 +1,5 @@
-﻿using Cinemachine;
+﻿using System.Linq;
+using Cinemachine;
 using Fusion;
 using UnityEngine;
 
@@ -9,20 +10,22 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
     [SerializeField] CinemachineVirtualCamera freeLookCamera;
     [SerializeField] int horizontalGap;
     [SerializeField] int verticalGap;
-    int playerCount = 0;
+    
     //[Networked, Capacity(12)] private NetworkDictionary<PlayerRef, NetworkObject> Players => default;
     public void PlayerJoined(PlayerRef player)
     {
         if (player == Runner.LocalPlayer)
         {
+            Debug.Log("Spawn player");
             NetworkObject playerObj = Runner.Spawn(playerPrefab, GetCarPosition(), spawnPoint.rotation);            
             //Players.Add(player, playerObj);
             SetCamera(playerObj.transform);
-            playerCount++;
+            
         }
     }
     Vector3 GetCarPosition()
     {
+        int playerCount = Runner.ActivePlayers.Count() - 1;
         //determine the position of the car 
         float posX = 0;
         float posZ = 0;
