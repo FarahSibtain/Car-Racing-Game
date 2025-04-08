@@ -402,6 +402,8 @@ MonoBehaviour:
   playerPrefab: {fileID: 2673629289099262725, guid: d37185e72f42e6e4d80919a98563eb4a, type: 3}
   spawnPoint: {fileID: 483358122}
   freeLookCamera: {fileID: 1568895389}
+  horizontalGap: -4
+  verticalGap: 5
 --- !u!1 &1568895388
 GameObject:
   m_ObjectHideFlags: 0

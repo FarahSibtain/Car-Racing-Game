@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 2673629289099262728}
   - component: {fileID: 2673629289099262729}
   - component: {fileID: 4820687948896717585}
+  - component: {fileID: 4124245632104433271}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -249,6 +250,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 2673629289099262729}
   - {fileID: 4820687948896717585}
+  - {fileID: 4124245632104433271}
   SimulationBehaviours: []
 --- !u!143 &2673629289099262728
 CharacterController:
@@ -321,3 +323,16 @@ MonoBehaviour:
   _jumpForce: 5
   _gravityValue: -9.81
   PlayerCamera: {fileID: 0}
+--- !u!114 &4124245632104433271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2673629289099262725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b46b15050944b439cebe4e323d2df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
