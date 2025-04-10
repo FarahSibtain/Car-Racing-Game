@@ -19,11 +19,9 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
         if (player == Runner.LocalPlayer)
         {
             Debug.Log("Spawn player");
-            NetworkObject playerObj = Runner.Spawn(playerPrefab, GetCarPosition(), spawnPoint.rotation);            
+            NetworkObject playerObj = Runner.Spawn(playerPrefab, GetCarPosition(), spawnPoint.rotation, inputAuthority: Runner.LocalPlayer);            
             //Players.Add(player, playerObj);
-            SetCamera(playerObj.transform);
-            NameFieldHandler nameFieldHandler  = playerObj.GetComponent<NameFieldHandler>();
-            nameFieldHandler.SetPlayerNameField(playerName.text);
+            SetCamera(playerObj.transform);            
         }
     }
     Vector3 GetCarPosition()

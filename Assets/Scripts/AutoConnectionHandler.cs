@@ -12,13 +12,22 @@ public class AutoConnectionHandler : MonoBehaviour, INetworkRunnerCallbacks
     [SerializeField] TMP_InputField playerName;
     private NetworkRunner _runner;
 
+    public static string playerNameField = "PlayerName";
+
+    private void Start()
+    {
+        playerName.text = PlayerPrefs.GetString(playerNameField);
+    }
+
     public void ConnectToPhotonNetwork()
     {
         if (string.IsNullOrEmpty(playerName.text))
         {
             return;
         }
-        
+
+        PlayerPrefs.SetString(playerNameField, playerName.text);
+
         StartSharedMode();
     }
 
